@@ -4,8 +4,15 @@ pipeline {
         stage("Initialize") {
             steps {
 		sh "ls"
-                cleanWs()
+                //cleanWs()
             }
         }
+	stage('build') {
+	steps {
+	   nodejs('nodejs8') {
+		npm install
+           }
+	}
+	}
     }	
 }
