@@ -20,12 +20,17 @@ pipeline {
         sh "docker ps"
       }
     }
-    stage('test') {
-      steps {
-        nodejs('nodejs8') {
-          sh "npm test"
+    //stage('test') {
+    //  steps {
+    //    nodejs('nodejs8') {
+    //      sh "npm test"
+    //    }
+    //  }
+   // }
+     stage('deploy') {
+        steps {
+           sh "docker run -itd --name nodewebapp -p 3000:3000 nodewebapp:latest"
         }
-      }
-    }
+     }
   }
 }
