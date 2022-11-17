@@ -1,10 +1,13 @@
 pipeline {
   agent any
+  options {
+    skipDefaultCheckout()
+  }
   stages {
     stage("Initialize") {
       steps {
-        sh "ls"
-        //cleanWs()
+        cleanWs()
+        checkout scm
       }
     }
     stage('build') {
